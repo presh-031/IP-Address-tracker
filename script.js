@@ -11,5 +11,11 @@ async function fetchIpDetails() {
 
   const res = await fetch(url);
   const data = await res.json(); //parse response as JSON
-  console.log(data);
+  // console.log(data);
+
+  // updating dom with important data
+  document.querySelector(".ip").innerHTML = data.ip;
+  document.querySelector(".location").innerHTML = data.location.country + ", " + data.location.region;
+  document.querySelector(".timezone").innerHTML = data.location.timezone;
+  document.querySelector(".isp").innerHTML = data.isp;
 }

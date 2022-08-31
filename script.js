@@ -15,9 +15,16 @@ getUserIpOnPageLoad();
 const searchBtn = document.querySelector(".search-btn");
 searchBtn.addEventListener("click", getUserInput);
 
+// Pressing enter should also search IP
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    getUserInput();
+  }
+});
+
 function getUserInput() {
   const searchedIpAddress = document.querySelector("#search-bar").value;
-  // fetchIpDetails(searchedIpAddress);
+  fetchIpDetails(searchedIpAddress);
 
   // Show custom Loading values while fetching
   document.querySelector(".ip-address").innerHTML = "Loading...";
@@ -72,8 +79,5 @@ function showMap(lat, lng) {
       .openOn(map);
   }
   map.on("click", onMapClick);
-
-  // Setting map control buttons
-  L.control.position("bottomright");
 }
 // Get the lat and long of current IP, and call the showMap function with them.

@@ -1,34 +1,37 @@
 "use strict";
 // On initial page load,use should see their own ip address and information
 // use ipify to get user's ip address
-fetch(`https://api.ipify.org/?format=json`)
-  .then((res) => res.json()) //parse response as JSON
-  .then((data) => {
-    console.log(data);
-    const userIp = data.ip;
-    fetchIpDetails(userIp);
-  })
-  .catch((err) => {
-    console.log(`error ${err}`);
-  });
+async function getUserIpOnPageLoad() {
+  const url = `https://api.ipify.org/?format=json`;
+  const res = await fetch(url);
+  const data = await res.json(); //parse response as JSON
+
+  console.log(data);
+  const userIpAddress = data.ip;
+  fetchIpDetails(userIpAddress);
+}
+getUserIpOnPageLoad();
 
 // User should be able to search for any IP address
 const searchBtn = document.querySelector(".search-btn");
-const searchedIp = document.querySelector("#search-bar").value;
-console.log();
-console.log(searchedIp);
-searchBtn.addEventListener("click", () => {
-  fetchIpDetails(searchedIp);
-});
+searchBtn.addEventListener("click", getUserInput);
+
+function getUserInput() {
+  const searchedIpAddress = document.querySelector("#search-bar").value;
+  console.log(searchedIpAddress);
+  fetchIpDetails(searchedIpAddress);
+}
 
 // fetch ip details
-async function fetchIpDetails(ip) {
+async function fetchIpDetails(ipAddress) {
   const url = `
-  https://geo.ipify.org/api/v2/country?apiKey=at_bGDoy4LONhpW05ix1qSSs6uK9iZex&ipAddress=${ip}`;
+  https://geo.ipify.org/api/v2/country?apiKey=at_bGDoy4LONhpW05ix1qSSs6uK9iZex&ipAddress=${ipAddress}`;
 
   const res = await fetch(url);
   const data = await res.json(); //parse response as JSON
 
+  console.log(data.ip);
+  console.log(data.isp);
   // updating dom with important data
   document.querySelector(".ip-address").innerHTML = data.ip;
   document.querySelector(".location").innerHTML = data.location.country + ", " + data.location.region;

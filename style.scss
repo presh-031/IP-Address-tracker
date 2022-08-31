@@ -62,7 +62,8 @@ body {
     border-radius: 10px;
     position: absolute;
     left: 50%;
-    top: 60%;
+    // top: 60%;
+    top: 28rem; //needs to be fixed
     transform: translate(-50%, -50%);
     z-index: 10;
     div {
@@ -83,10 +84,11 @@ body {
 }
 .map-container {
   position: relative;
-  z-index: 1000;
+  z-index: 1;
   border: 5px solid red;
   // height: 90rem;
   #map {
     outline: 1px solid blue;
+    height: calc(100vh- 28rem);
   }
 }

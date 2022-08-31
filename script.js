@@ -6,7 +6,6 @@ async function getUserIpOnPageLoad() {
   const res = await fetch(url);
   const data = await res.json(); //parse response as JSON
 
-  // console.log(data);
   const userIpAddress = data.ip;
   fetchIpDetails(userIpAddress);
 }
@@ -50,8 +49,11 @@ async function fetchIpDetails(ipAddress) {
 
 // Adding map functionality with leaflet.js
 function showMap(lat, lng) {
-  var map = L.map("map").setView([lat, lng], 13);
+  const mapArea = document.getElementById("map");
+  const vh = Math.max(document.documentElement.clientHeight);
+  mapArea.style.height = `${vh - 27}rem`;
 
+  var map = L.map("map").setView([lat, lng], 13);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: "© OpenStreetMap",

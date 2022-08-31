@@ -40,3 +40,15 @@ async function fetchIpDetails(ipAddress) {
   document.querySelector(".timezone").innerHTML = data.location.timezone;
   document.querySelector(".isp").innerHTML = data.isp;
 }
+
+// Adding map functionality with leaflet.js
+function showMap() {
+  var map = L.map("map").setView([51.505, -0.09], 13);
+
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "© OpenStreetMap",
+  }).addTo(map);
+}
+// Get the lat and long of current IP, and call the showMap function with them.
+showMap();

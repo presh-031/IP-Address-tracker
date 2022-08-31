@@ -82,6 +82,11 @@ body {
   }
 }
 .map-container {
+  position: relative;
+  z-index: 1000;
   border: 5px solid red;
-  height: 90rem;
+  // height: 90rem;
+  #map {
+    outline: 1px solid blue;
+  }
 }

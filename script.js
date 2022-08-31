@@ -6,7 +6,7 @@ async function getUserIpOnPageLoad() {
   const res = await fetch(url);
   const data = await res.json(); //parse response as JSON
 
-  console.log(data);
+  // console.log(data);
   const userIpAddress = data.ip;
   fetchIpDetails(userIpAddress);
 }
@@ -18,20 +18,22 @@ searchBtn.addEventListener("click", getUserInput);
 
 function getUserInput() {
   const searchedIpAddress = document.querySelector("#search-bar").value;
-  console.log(searchedIpAddress);
   fetchIpDetails(searchedIpAddress);
+
+  // Show custom Loading values while fetching
+  document.querySelector(".ip-address").innerHTML = "Loading...";
+  document.querySelector(".location").innerHTML = "Loading...";
+  document.querySelector(".timezone").innerHTML = "Loading...";
+  document.querySelector(".isp").innerHTML = "Loading...";
 }
 
 // fetch ip details
 async function fetchIpDetails(ipAddress) {
   const url = `
   https://geo.ipify.org/api/v2/country?apiKey=at_bGDoy4LONhpW05ix1qSSs6uK9iZex&ipAddress=${ipAddress}`;
-
   const res = await fetch(url);
   const data = await res.json(); //parse response as JSON
 
-  console.log(data.ip);
-  console.log(data.isp);
   // updating dom with important data
   document.querySelector(".ip-address").innerHTML = data.ip;
   document.querySelector(".location").innerHTML = data.location.country + ", " + data.location.region;

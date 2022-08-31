@@ -18,6 +18,7 @@ searchBtn.addEventListener("click", getUserInput);
 // Pressing enter should also search IP
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
+    e.preventDefault();
     getUserInput();
   }
 });

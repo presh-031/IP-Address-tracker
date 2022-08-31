@@ -23,10 +23,10 @@ body {
 .main-container {
   background-image: url("/images/pattern-bg.png");
   background-repeat: repeat;
-  border: 1px solid red;
   height: 28rem;
+  padding-top: 2rem;
   .heading-text {
-    margin: 2rem 0;
+    margin-bottom: 2rem;
     color: #fff;
     font-size: 2rem;
     font-weight: 500;
@@ -35,31 +35,38 @@ body {
     display: flex;
     margin: auto;
     width: 80%;
-    // outline: 1px solid red;
     input {
       padding: 1.5rem 2rem;
-      border-radius: 10px 0 0 10px;
+      border-radius: 15px 0 0 15px;
       outline: none;
       border: none;
       width: 100%;
+      font-weight: 500;
       color: $very-dark-gray;
+      cursor: pointer;
     }
     button {
-      background-color: $very-dark-gray;
+      background-color: #000;
       border: none;
       padding: 0 2rem;
-      border-radius: 0 10px 10px 0;
+      display: grid;
+      place-items: center;
+      border-radius: 0 15px 15px 0;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: $very-dark-gray;
     }
   }
   .ip-info-container {
     background-color: #fff;
-    outline: 1px solid red;
+
     width: 80%;
     margin: auto;
     margin-top: 2rem;
     color: $very-dark-gray;
     padding: 2rem 0 0 0;
-    border-radius: 10px;
+    border-radius: 15px;
     position: absolute;
     left: 50%;
     // top: 60%;
@@ -67,7 +74,7 @@ body {
     transform: translate(-50%, -50%);
     z-index: 10;
     div {
-      // outline: 1px solid red;
+      //
       margin-bottom: 2rem;
       p:first-of-type {
         color: $dark-gray;
@@ -85,10 +92,10 @@ body {
 .map-container {
   position: relative;
   z-index: 1;
-  border: 5px solid red;
   // height: 90rem;
   #map {
-    outline: 1px solid blue;
     // height: calc(100vh- 28rem);
   }
+}
+@media (min-width: 550px) {
 }

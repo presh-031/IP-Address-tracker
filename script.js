@@ -17,7 +17,7 @@ searchBtn.addEventListener("click", getUserInput);
 
 function getUserInput() {
   const searchedIpAddress = document.querySelector("#search-bar").value;
-  fetchIpDetails(searchedIpAddress);
+  // fetchIpDetails(searchedIpAddress);
 
   // Show custom Loading values while fetching
   document.querySelector(".ip-address").innerHTML = "Loading...";
@@ -51,12 +51,29 @@ async function fetchIpDetails(ipAddress) {
 function showMap(lat, lng) {
   const mapArea = document.getElementById("map");
   const vh = Math.max(document.documentElement.clientHeight);
-  mapArea.style.height = `${vh - 28}rem`;
+  mapArea.style.height = `${vh - 280}px`;
 
   var map = L.map("map").setView([lat, lng], 13);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: "© OpenStreetMap",
   }).addTo(map);
+
+  // Adding location marker and popup to map
+  var marker = L.marker([lat, lng]).addTo(map);
+  marker.bindPopup("ip location").openPopup();
+
+  // Adding eventListener to map
+  var popup = L.popup();
+  function onMapClick(e) {
+    popup
+      .setLatLng(e.latlng)
+      .setContent("You clicked the map at " + e.latlng.toString())
+      .openOn(map);
+  }
+  map.on("click", onMapClick);
+
+  // Setting map control buttons
+  L.control.position("bottomright");
 }
 // Get the lat and long of current IP, and call the showMap function with them.

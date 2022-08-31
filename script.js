@@ -15,6 +15,8 @@ fetch(`https://api.ipify.org/?format=json`)
 // User should be able to search for any IP address
 const searchBtn = document.querySelector(".search-btn");
 const searchedIp = document.querySelector("#search-bar").value;
+console.log();
+console.log(searchedIp);
 searchBtn.addEventListener("click", () => {
   fetchIpDetails(searchedIp);
 });

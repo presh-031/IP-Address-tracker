@@ -51,7 +51,7 @@ async function fetchIpDetails(ipAddress) {
 function showMap(lat, lng) {
   const mapArea = document.getElementById("map");
   const vh = Math.max(document.documentElement.clientHeight);
-  mapArea.style.height = `${vh - 27}rem`;
+  mapArea.style.height = `${vh - 28}rem`;
 
   var map = L.map("map").setView([lat, lng], 13);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {

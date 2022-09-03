@@ -1,6 +1,10 @@
 "use strict";
 // On initial page load,use should see their own ip address and information
 // use ipify to get user's ip address
+getUserIpOnPageLoad();
+searchAnyIpOnClick();
+searchAnyIpOnEnter();
+
 async function getUserIpOnPageLoad() {
   const url = `https://api.ipify.org/?format=json`;
   const res = await fetch(url);
@@ -9,23 +13,26 @@ async function getUserIpOnPageLoad() {
   const userIpAddress = data.ip;
   fetchIpDetails(userIpAddress);
 }
-getUserIpOnPageLoad();
-
 // User should be able to search for any IP address
-const searchBtn = document.querySelector(".search-btn");
-searchBtn.addEventListener("click", getUserInput);
-
+function searchAnyIpOnClick() {
+  const searchBtn = document.querySelector(".search-btn");
+  searchBtn.addEventListener("click", getUserInput);
+}
 // Pressing enter should also search IP
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    getUserInput();
-  }
-});
+function searchAnyIpOnEnter() {
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      getUserInput();
+    }
+  });
+}
 
 function getUserInput() {
   const searchedIpAddress = document.querySelector("#search-bar").value;
   fetchIpDetails(searchedIpAddress);
+  // map.off();
+  // map.remove();
 
   // Show custom Loading values while fetching
   document.querySelector(".ip-address").innerHTML = "Loading...";
@@ -46,8 +53,9 @@ async function fetchIpDetails(ipAddress) {
 
   // updating dom with important data
   document.querySelector(".ip-address").innerHTML = data.ip;
-  document.querySelector(".location").innerHTML =
-    data.location.country + ", " + data.location.region + ", " + data.location.city;
+  document.querySelector(
+    ".location"
+  ).innerHTML = `${data.location.country}, ${data.location.region}, ${data.location.city}`;
   document.querySelector(".timezone").innerHTML = data.location.timezone;
   document.querySelector(".isp").innerHTML = data.isp;
 
@@ -57,7 +65,7 @@ async function fetchIpDetails(ipAddress) {
 
 // Adding map functionality with leaflet.js
 function showMap(lat, lng) {
-  const mapArea = document.getElementById("map");
+  let mapArea = document.getElementById("map");
   const vh = Math.max(document.documentElement.clientHeight);
   mapArea.style.height = `${vh - 280}px`;
 
@@ -81,4 +89,4 @@ function showMap(lat, lng) {
   }
   map.on("click", onMapClick);
 }
-// Get the lat and long of current IP, and call the showMap function with them.
+// Still working on map container already initialized errormsg

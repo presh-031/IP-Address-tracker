@@ -30,9 +30,9 @@ function searchAnyIpOnEnter() {
 
 function getUserInput() {
   const searchedIpAddress = document.querySelector("#search-bar").value;
+  map.remove();
   fetchIpDetails(searchedIpAddress);
   // map.off();
-  // map.remove();
 
   // Show custom Loading values while fetching
   document.querySelector(".ip-address").innerHTML = "Loading...";
@@ -66,6 +66,7 @@ async function fetchIpDetails(ipAddress) {
 // Adding map functionality with leaflet.js
 function showMap(lat, lng) {
   let mapArea = document.getElementById("map");
+
   const vh = Math.max(document.documentElement.clientHeight);
   mapArea.style.height = `${vh - 280}px`;
 
@@ -90,3 +91,4 @@ function showMap(lat, lng) {
   map.on("click", onMapClick);
 }
 // Still working on map container already initialized errormsg
+// map.remove() affects the initial set height of map that's required

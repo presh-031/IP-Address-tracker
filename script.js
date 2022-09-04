@@ -30,9 +30,9 @@ function searchAnyIpOnEnter() {
 
 function getUserInput() {
   const searchedIpAddress = document.querySelector("#search-bar").value;
-  map.remove();
-  fetchIpDetails(searchedIpAddress);
+  // map.remove();
   // map.off();
+  fetchIpDetails(searchedIpAddress);
 
   // Show custom Loading values while fetching
   document.querySelector(".ip-address").innerHTML = "Loading...";
@@ -65,10 +65,9 @@ async function fetchIpDetails(ipAddress) {
 
 // Adding map functionality with leaflet.js
 function showMap(lat, lng) {
-  let mapArea = document.getElementById("map");
-
-  const vh = Math.max(document.documentElement.clientHeight);
-  mapArea.style.height = `${vh - 280}px`;
+  // let mapArea = document.getElementById("map");
+  // const vh = Math.max(document.documentElement.clientHeight);
+  // mapArea.style.height = `${vh - 280}px`;
 
   var map = L.map("map").setView([lat, lng], 13);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -77,8 +76,13 @@ function showMap(lat, lng) {
   }).addTo(map);
 
   // Adding location marker and popup to map
-  var marker = L.marker([lat, lng]).addTo(map);
-  marker.bindPopup("ip location").openPopup();
+  let myIcon = L.icon({
+    iconUrl: "images/icon-location.svg",
+    iconSize: [24, 48],
+    iconAnchor: [20, 70],
+  });
+  const marker = L.marker([lat, lng], { icon: myIcon }).addTo(map);
+  // marker.bindPopup("IP Location");
 
   // Adding eventListener to map
   var popup = L.popup();
@@ -89,6 +93,8 @@ function showMap(lat, lng) {
       .openOn(map);
   }
   map.on("click", onMapClick);
+
+  // map.zoomControl.remove();
 }
 // Still working on map container already initialized errormsg
 // map.remove() affects the initial set height of map that's required

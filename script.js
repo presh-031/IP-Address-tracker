@@ -5,6 +5,22 @@ getUserIpOnPageLoad();
 searchAnyIpOnClick();
 searchAnyIpOnEnter();
 
+const map = L.map("map").setView([0, 0], 13);
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  attribution: "© OpenStreetMap",
+}).addTo(map);
+
+// Adding location marker and popup to map
+let myIcon = L.icon({
+  iconUrl: "images/icon-location.svg",
+  iconSize: [35, 35],
+  iconAnchor: [15, 15],
+});
+const marker = L.marker([0, 0], { icon: myIcon }).addTo(map);
+// marker.bindPopup("IP Location");
+
 async function getUserIpOnPageLoad() {
   const url = `https://api.ipify.org/?format=json`;
   const res = await fetch(url);
@@ -60,41 +76,48 @@ async function fetchIpDetails(ipAddress) {
   document.querySelector(".isp").innerHTML = data.isp;
 
   // calling map function with lat and lng
-  showMap(lat, lng);
+  // showMap(lat, lng);
+  map.setView([lat, lng], 13);
+  marker.setLatLng([lat, lng]);
 }
 
 // Adding map functionality with leaflet.js
-function showMap(lat, lng) {
-  // let mapArea = document.getElementById("map");
-  // const vh = Math.max(document.documentElement.clientHeight);
-  // mapArea.style.height = `${vh - 280}px`;
+// function showMap(lat, lng) {
+// let mapArea = document.getElementById("map");
+// const vh = Math.max(document.documentElement.clientHeight);
+// mapArea.style.height = `${vh - 280}px`;
 
-  var map = L.map("map").setView([lat, lng], 13);
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-    attribution: "© OpenStreetMap",
-  }).addTo(map);
+// const map = L.map("map").setView([0, 0], 13);
 
-  // Adding location marker and popup to map
-  let myIcon = L.icon({
-    iconUrl: "images/icon-location.svg",
-    iconSize: [24, 48],
-    iconAnchor: [20, 70],
-  });
-  const marker = L.marker([lat, lng], { icon: myIcon }).addTo(map);
-  // marker.bindPopup("IP Location");
+// L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+//   maxZoom: 19,
+//   attribution: "© OpenStreetMap",
+// }).addTo(map);
 
-  // Adding eventListener to map
-  var popup = L.popup();
-  function onMapClick(e) {
-    popup
-      .setLatLng(e.latlng)
-      .setContent("You clicked the map at " + e.latlng.toString())
-      .openOn(map);
-  }
-  map.on("click", onMapClick);
+// // Adding location marker and popup to map
+// let myIcon = L.icon({
+//   iconUrl: "images/icon-location.svg",
+//   iconSize: [35, 35],
+//   iconAnchor: [15, 15],
+// });
+// const marker = L.marker([0, 0], { icon: myIcon }).addTo(map);
+// // marker.bindPopup("IP Location");
 
-  // map.zoomControl.remove();
+//
+// map.setView([lat, lng], 13);
+// marker.setLatLng([lat, lng]);
+// marker.bindPopup(`");
+// Adding eventListener to map
+var popup = L.popup();
+function onMapClick(e) {
+  popup
+    .setLatLng(e.latlng)
+    .setContent("You clicked the map at " + e.latlng.toString())
+    .openOn(map);
 }
+map.on("click", onMapClick);
+
+// map.zoomControl.remove();
+// }
 // Still working on map container already initialized errormsg
 // map.remove() affects the initial set height of map that's required

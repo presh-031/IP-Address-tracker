@@ -68,8 +68,6 @@ function getUserInput() {
 function fetchIpDetails(ipAddress) {
   const url = `
   https://geo.ipify.org/api/v2/country,city?apiKey=at_bGDoy4LONhpW05ix1qSSs6uK9iZex&ipAddress=${ipAddress}`;
-  // const res = await fetch(url);
-  // const data = await res.json(); //parse response as JSON
 
   fetch(url)
     .then((res) => res.json()) //parse response as JSON
@@ -91,9 +89,16 @@ function fetchIpDetails(ipAddress) {
       marker.bindPopup(data.ip).openPopup();
     })
     .catch((err) => {
-      console.log(`error ${err}`);
+      // console.log(`error ${err}`);
       showModal(err);
     });
 }
 // Modal for errors
-function showModal(err) {}
+function showModal(err) {
+  const modal = document.querySelector(".modal");
+  const overlay = document.querySelector(".overlay");
+
+  modal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+  console.log(err);
+}

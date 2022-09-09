@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- displays site properly based on user's device -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
-    <title>Frontend Mentor | IP Address Tracker</title>
+    <title>IP Address Tracker | Frontend Mentor</title>
+    <link rel="shortcut icon" href="./images/icon-location.svg" />
     <link rel="stylesheet" href="/css/style.css" />
     <!-- Load external script after loading important bits -->
     <link
@@ -52,6 +52,13 @@
     <section class="map-container">
       <div id="map" style="height: calc(100vh - 22rem)"></div>
     </section>
+    <div class="overlay hidden">
+      <div class="modal hidden">
+        <p>OH SNAP</p>
+        <p class="error-msg">error</p>
+        <button class="close-modal">Close</button>
+      </div>
+    </div>
     <!-- -coded by presh-031 (adding footer will messup map's controls) -->
     <script src="./script.js"></script>
   </body>

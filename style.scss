@@ -24,7 +24,8 @@ body {
 }
 .main-container {
   background-image: url("/images/pattern-bg.png");
-  background-repeat: repeat;
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 28rem;
   padding-top: 2rem;
   .heading-text {
@@ -69,6 +70,7 @@ body {
     padding: 2rem 0 0 0;
     border-radius: 15px;
     position: absolute;
+    word-wrap: break-word;
     left: 50%;
     // top: 60%;
     top: 28rem; //needs to be fixed
@@ -107,8 +109,16 @@ body {
 }
 @media (max-width: 450px) {
   .main-container {
+    form,
     .ip-info-container {
-      width: 70%;
+      width: 72%;
+      div {
+        p:last-of-type {
+          width: 80%;
+          margin: auto;
+          outline: 1px solid red;
+        }
+      }
     }
   }
 }

@@ -6,9 +6,8 @@ searchAnyIpOnEnter();
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 
-//// Initializing map
+////////// Initializing map
 const map = L.map("map").setView([0, 0], 13);
-
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution: "© OpenStreetMap",
@@ -32,6 +31,7 @@ function onMapClick(e) {
 }
 map.on("click", onMapClick);
 
+////////// Get user's IP Address on page load
 async function getUserIpOnPageLoad() {
   const url = `https://api.ipify.org/?format=json`;
   const res = await fetch(url);
@@ -40,7 +40,7 @@ async function getUserIpOnPageLoad() {
   const userIpAddress = data.ip;
   fetchIpDetails(userIpAddress);
 }
-// ///Search for any IP Address
+//////////Search for any IP Address
 // when search btn is clicked
 function searchAnyIpOnClick() {
   const searchBtn = document.querySelector(".search-btn");
@@ -55,13 +55,12 @@ function searchAnyIpOnEnter() {
     }
   });
 }
-
 function getUserInput() {
   const searchedIpAddress = document.querySelector("#search-bar").value;
   fetchIpDetails(searchedIpAddress);
 }
 
-// fetch ip details and update map
+////////// Fetch ip details and update map
 function fetchIpDetails(ipAddress) {
   const url = `
   https://geo.ipify.org/api/v2/country,city?apiKey=at_bGDoy4LONhpW05ix1qSSs6uK9iZex&ipAddress=${ipAddress}`;

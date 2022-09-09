@@ -96,6 +96,26 @@ body {
   position: relative;
   z-index: 1;
 }
+// Footer
+footer {
+  padding: 1rem;
+  font-size: 2rem;
+  text-align: center;
+  background-color: $very-dark-gray;
+  color: #fff;
+  a {
+    color: inherit;
+    cursor: pointer;
+  }
+  .fa-github {
+    font-size: inherit;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  .fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
+  }
+}
 
 // Error modal and popup
 @media (min-width: 450px) and (max-width: 1199px) {
@@ -184,6 +204,7 @@ body {
   padding: 0;
   font-family: $rubik;
   padding: 2rem;
+  border-radius: 15px;
   p {
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -196,6 +217,7 @@ body {
     background-color: inherit;
     padding: 0.5rem 1rem;
     cursor: pointer;
+    border-radius: 5px;
   }
 }
 

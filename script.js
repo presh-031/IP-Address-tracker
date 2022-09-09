@@ -83,7 +83,6 @@ function fetchIpDetails(ipAddress) {
       marker.bindPopup(data.ip).openPopup();
     })
     .catch((err) => {
-      // console.log(`error ${err}`);
       showModal(err);
     });
 }
@@ -105,5 +104,13 @@ function closeModal() {
   closeModalBtn.addEventListener("click", () => {
     modal.classList.add("hidden");
     overlay.classList.add("hidden");
+  });
+
+  // Closemodal when Esc is pressed
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      modal.classList.add("hidden");
+      overlay.classList.add("hidden");
+    }
   });
 }

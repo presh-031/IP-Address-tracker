@@ -20,13 +20,12 @@ $very-dark-gray: hsl(0, 0%, 17%);
 body {
   font-family: $rubik;
   text-align: center;
-  // position: relative;
 }
 .main-container {
   background-image: url("/images/pattern-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 28rem;
+  height: 22rem;
   padding-top: 2rem;
   .heading-text {
     margin-bottom: 2rem;
@@ -77,7 +76,6 @@ body {
     transform: translate(-50%, -50%);
     z-index: 10;
     div {
-      //
       margin-bottom: 2rem;
       p:first-of-type {
         color: $dark-gray;
@@ -116,7 +114,6 @@ body {
         p:last-of-type {
           width: 80%;
           margin: auto;
-          outline: 1px solid red;
         }
       }
     }
@@ -128,13 +125,10 @@ body {
     height: 22rem;
     .heading-text {
       font-size: 4rem;
-      // outline: 1px solid red;
     }
     form {
-      // outline: 1px solid red;
       width: 40%;
       input {
-        // outline: 1px solid red;
         font-size: 1.5rem;
       }
       button {
@@ -147,27 +141,22 @@ body {
       display: flex;
       padding: 0rem;
       top: 20rem;
-      // outline: 1px solid red;
       box-shadow: 0px 15px 100px 0px rgba($color: #000000, $alpha: 0.2);
       div {
         flex: 1;
-        // outline: 1px solid red;
         border-right: 1px solid rgb(184, 184, 184);
         margin: 0;
         text-align: left;
         padding: 3rem 0 3rem 0;
         padding-left: 3rem;
         p:first-of-type {
-          // outline: 1px solid red;
           margin: 0 0 1rem 0;
 
           font-size: 1rem;
         }
         p:last-of-type {
-          // outline: 1px solid red;
           font-size: 1.5rem;
           width: 80%;
-          // outline: 1px solid red;
         }
       }
       div:last-of-type {

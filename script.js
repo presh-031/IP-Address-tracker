@@ -56,12 +56,6 @@ function searchAnyIpOnEnter() {
 function getUserInput() {
   const searchedIpAddress = document.querySelector("#search-bar").value;
   fetchIpDetails(searchedIpAddress);
-
-  // Show custom Loading values while fetching
-  document.querySelector(".ip-address").innerHTML = "Loading...";
-  document.querySelector(".location").innerHTML = "Loading...";
-  document.querySelector(".timezone").innerHTML = "Loading...";
-  document.querySelector(".isp").innerHTML = "Loading...";
 }
 
 // fetch ip details and update map
@@ -79,8 +73,8 @@ function fetchIpDetails(ipAddress) {
       document.querySelector(".ip-address").innerHTML = data.ip;
       document.querySelector(
         ".location"
-      ).innerHTML = `${data.location.country}, ${data.location.region}, ${data.location.city}`;
-      document.querySelector(".timezone").innerHTML = data.location.timezone;
+      ).innerHTML = `${data.location.city}, ${data.location.region}, ${data.location.country}`;
+      document.querySelector(".timezone").innerHTML = "UTC " + data.location.timezone;
       document.querySelector(".isp").innerHTML = data.isp;
 
       // showing map  with lat and lng
@@ -94,11 +88,22 @@ function fetchIpDetails(ipAddress) {
     });
 }
 // Modal for errors
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
 function showModal(err) {
-  const modal = document.querySelector(".modal");
-  const overlay = document.querySelector(".overlay");
+  const errorMsg = document.querySelector(".error-msg");
 
   modal.classList.remove("hidden");
   overlay.classList.remove("hidden");
-  console.log(err);
+  errorMsg.innerHTML = err;
+
+  closeModal();
+}
+
+function closeModal() {
+  const closeModalBtn = document.querySelector(".close-modal");
+  closeModalBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+    overlay.classList.add("hidden");
+  });
 }

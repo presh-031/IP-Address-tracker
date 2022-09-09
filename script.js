@@ -3,6 +3,9 @@ getUserIpOnPageLoad();
 searchAnyIpOnClick();
 searchAnyIpOnEnter();
 
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+
 //// Initializing map
 const map = L.map("map").setView([0, 0], 13);
 
@@ -77,7 +80,7 @@ function fetchIpDetails(ipAddress) {
       document.querySelector(".timezone").innerHTML = "UTC " + data.location.timezone;
       document.querySelector(".isp").innerHTML = data.isp;
 
-      // showing map  with lat and lng
+      //showing map  with lat and lng
       map.setView([lat, lng], 13);
       marker.setLatLng([lat, lng]);
       marker.bindPopup(data.ip).openPopup();
@@ -87,14 +90,14 @@ function fetchIpDetails(ipAddress) {
     });
 }
 // Modal for errors
-const modal = document.querySelector(".modal");
-const overlay = document.querySelector(".overlay");
 function showModal(err) {
   const errorMsg = document.querySelector(".error-msg");
 
   modal.classList.remove("hidden");
   overlay.classList.remove("hidden");
-  errorMsg.innerHTML = err;
+  errorMsg.innerHTML = "Failed to fetch / Invalid IP";
+
+  document.querySelector("#search-bar").value = "";
 
   closeModal();
 }

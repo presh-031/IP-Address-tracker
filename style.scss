@@ -46,7 +46,6 @@ body {
       width: 100%;
       font-weight: 500;
       color: $very-dark-gray;
-      cursor: pointer;
     }
     button {
       background-color: #000;
@@ -124,6 +123,13 @@ body {
     padding: 0.5rem 1rem;
     cursor: pointer;
     border-radius: 5px;
+    border: none;
+    font-weight: 500;
+    outline: 2px solid #504ca1;
+  }
+  .close-modal:hover {
+    color: #fff;
+    background-color: #504ca1;
   }
 }
 .overlay {
@@ -143,10 +149,10 @@ body {
 
 // Footer
 footer {
-  padding: 1rem;
+  padding: 1.9rem;
   font-size: 2rem;
   text-align: center;
-  background-color: $very-dark-gray;
+  background-color: #504ca1;
   color: #fff;
   a {
     color: inherit;

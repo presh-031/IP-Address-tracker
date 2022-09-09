@@ -28,7 +28,6 @@ body {
   background-size: cover;
   height: 22rem;
   padding-top: 2rem;
-  // position: relative;
   .heading-text {
     margin-bottom: 2rem;
     color: #fff;
@@ -74,7 +73,7 @@ body {
     word-wrap: break-word;
     left: 50%;
     // top: 60%;
-    top: 26rem; //needs to be fixed
+    top: 26rem; //needs to be 'relatively fixed'
     transform: translate(-50%, -50%);
     z-index: 2;
     div {
@@ -96,100 +95,7 @@ body {
   position: relative;
   z-index: 1;
 }
-// Footer
-footer {
-  padding: 1rem;
-  font-size: 2rem;
-  text-align: center;
-  background-color: $very-dark-gray;
-  color: #fff;
-  a {
-    color: inherit;
-    cursor: pointer;
-  }
-  .fa-github {
-    font-size: inherit;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-  }
-  .fa-github:hover {
-    transform: rotate(360deg) scale(1.2);
-  }
-}
 
-// Error modal and popup
-@media (min-width: 450px) and (max-width: 1199px) {
-  .main-container {
-    form {
-      max-width: 500px;
-    }
-    .ip-info-container {
-      max-width: 800px;
-    }
-  }
-}
-@media (max-width: 450px) {
-  .main-container {
-    form,
-    .ip-info-container {
-      width: 72%;
-      div {
-        p:last-of-type {
-          width: 80%;
-          margin: auto;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 1200px) {
-  .main-container {
-    height: 22rem;
-    .heading-text {
-      font-size: 4rem;
-    }
-    form {
-      width: 40%;
-      input {
-        font-size: 1.5rem;
-      }
-      button {
-      }
-      button:hover {
-      }
-    }
-
-    .ip-info-container {
-      display: flex;
-      padding: 2rem;
-      // outline: 1px solid red;
-      top: 20rem;
-      box-shadow: 0px 15px 100px 0px rgba($color: #000000, $alpha: 0.2);
-      div {
-        flex: 1;
-        // outline: 1px solid red;
-        border-right: 1px solid rgb(184, 184, 184);
-        margin: 0;
-        text-align: left;
-        padding: 1rem 0 1rem 0;
-        padding-left: 3rem;
-        p:first-of-type {
-          margin: 0 0 1rem 0;
-
-          font-size: 1rem;
-        }
-        p:last-of-type {
-          font-size: 1.5rem;
-          width: 80%;
-        }
-      }
-      div:last-of-type {
-        border: none;
-      }
-    }
-  }
-}
 /// overlay and modal
 .modal {
   z-index: 10;
@@ -220,7 +126,6 @@ footer {
     border-radius: 5px;
   }
 }
-
 .overlay {
   position: absolute;
   top: 0;
@@ -231,9 +136,94 @@ footer {
   z-index: 5;
   display: grid;
   place-items: center;
-  // border: 5px solid red;
 }
-
 .hidden {
   display: none;
+}
+
+// Footer
+footer {
+  padding: 1rem;
+  font-size: 2rem;
+  text-align: center;
+  background-color: $very-dark-gray;
+  color: #fff;
+  a {
+    color: inherit;
+    cursor: pointer;
+  }
+  .fa-github {
+    font-size: inherit;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  .fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
+  }
+}
+
+// Media Queries
+@media (min-width: 450px) and (max-width: 1199px) {
+  .main-container {
+    form {
+      max-width: 500px;
+    }
+    .ip-info-container {
+      max-width: 800px;
+    }
+  }
+}
+@media (max-width: 450px) {
+  .main-container {
+    form,
+    .ip-info-container {
+      width: 72%;
+      div {
+        p:last-of-type {
+          width: 80%;
+          margin: auto;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .main-container {
+    height: 22rem;
+    .heading-text {
+      font-size: 4rem;
+    }
+    form {
+      width: 40%;
+      input {
+        font-size: 1.5rem;
+      }
+    }
+    .ip-info-container {
+      display: flex;
+      padding: 2rem;
+      top: 20rem;
+      box-shadow: 0px 15px 100px 0px rgba($color: #000000, $alpha: 0.2);
+      div {
+        flex: 1;
+        border-right: 1px solid rgb(184, 184, 184);
+        margin: 0;
+        text-align: left;
+        padding: 1rem 0 1rem 0;
+        padding-left: 3rem;
+        p:first-of-type {
+          margin: 0 0 1rem 0;
+
+          font-size: 1rem;
+        }
+        p:last-of-type {
+          font-size: 1.5rem;
+          width: 80%;
+        }
+      }
+      div:last-of-type {
+        border: none;
+      }
+    }
+  }
 }
